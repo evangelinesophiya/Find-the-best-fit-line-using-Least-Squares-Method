@@ -18,39 +18,30 @@ To implement univariate Linear Regression to fit a straight line using least squ
 
 ## Program:
 ```
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Sample dataset (Univariate)
-x = np.array([1, 2, 3, 4, 5])     # Input feature
-y = np.array([2, 4, 5, 4, 5])     # Target values
-
-# Number of observations
-n = len(x)
-
-# Calculate slope (m) and intercept (c)
-m = (n * np.sum(x * y) - np.sum(x) * np.sum(y)) / (n * np.sum(x ** 2) - (np.sum(x)) ** 2)
-c = (np.sum(y) - m * np.sum(x)) / n
-
-print(f"Slope (m): {m}")
-print(f"Intercept (c): {c}")
-
-# Predict y values
-y_pred = m * x + c
-
-# Plot the data points and regression line
-plt.scatter(x, y, color='blue', label='Actual data')
-plt.plot(x, y_pred, color='red', label='Fitted line')
-plt.xlabel('X')
-plt.ylabel('Y')
-plt.title('Univariate Linear Regression using Least Squares')
-plt.legend()
+import numpy as np 
+import matplotlib.pyplot as plt 
+X = np.array([1, 2, 3, 4, 5])     
+Y = np.array([2, 4, 5, 4, 5])
+x_mean=np.mean(X)
+y_mean =np.mean(Y)
+num =0
+denom=0
+for i in range(len(X)):
+    num+=(X[i]-x_mean)*(Y[i]-y_mean)
+    denom+=((X[i]-x_mean))**2
+m=num/denom
+b=y_mean-(m*x_mean)
+print(m,b)
+y_predict=m*X+b
+print(y_predict)
+plt.scatter(X,Y,color='green')
+plt.plot(X,y_predict,color='red')
 plt.show()
 
 ```
 
 ## Output:
-<img width="840" height="633" alt="Screenshot 2026-04-25 081105" src="https://github.com/user-attachments/assets/78c462c9-c401-4bcf-ac00-92026331ecfb" />
+<img width="798" height="593" alt="Screenshot 2026-04-25 114045" src="https://github.com/user-attachments/assets/0560489f-3da0-4cd5-b6a2-3181a6a22142" />
 
 
 
